@@ -1,0 +1,72 @@
+<div class="tweet-container">
+  <!-- Image on the side of tweets -->
+  <aside class="tweet-sidebar">
+    <div class="thumbnail-container">
+      <img
+        src="https://picsum.photos/47/47/?random&time"
+        height="47"
+        width="47"
+        alt="picture of fred"
+        class="thumbnail"
+      />
+    </div>
+  </aside>
+  <!-- Display tweets -->
+  <article class="tweet">
+    <div class="profile-description">
+      <div class="profile-name-time">
+        <!-- TweetComponent -->
+        <!-- <h3 class="profile-full-name" *ngIf="tweet?.username" (click)="viewUserProfileWhenUsernameExist()">
+          {{ tweet?.username }}
+        </h3> -->
+        <h3 class="profile-full-name" *ngIf="tweet?.username" (click)="viewUserProfile(tweet?.user_id)">
+          {{ tweet?.username }}
+        </h3>
+
+        <span class="time-since-tweet">{{ getTimeSince(tweet?.date) }}</span>
+      </div>
+    </div>
+    <p class="tweet-text">{{ tweet?.content }}</p>
+
+    <div class="tweet-controls">
+      <nav class="icon-menu">
+        <ul>
+          <li>
+            <i class="fas fa-heart icon-color" (click)="likeTweet()"></i>
+            <span class="like-count">{{ tweet?.likes }}</span>
+          </li>
+
+          <div
+            (click)="showCommentBox = !showCommentBox"
+            class="comment-icon icon-color"
+          >
+            <i class="fa fa-comment"></i>
+          </div>
+
+          <!-- Comment text box -->
+          <div *ngIf="showCommentBox">
+            <form (submit)="postComment()">
+              <textarea
+                [(ngModel)]="newComment"
+                name="newComment"
+                placeholder="Write your comment here..."
+              ></textarea>
+              <button type="submit">Post</button>
+            </form>
+          </div>
+          <li>
+            <i class="fas fa-retweet icon-color" (click)="retweetTweet()"></i>
+            <span class="retweet-count">{{ tweet?.retweets }}</span>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="tweet-comment">
+        <app-comment
+          [numberOfComments]="comments.length"
+          [comments]="comments"
+        ></app-comment>
+      </div>
+    </div>
+  </article>
+</div>

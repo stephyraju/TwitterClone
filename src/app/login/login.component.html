@@ -1,0 +1,94 @@
+<div class="container-fluid">
+  <div class="row banner">
+    <i class="fab fa-twitter twitter-logo"></i>
+  </div>
+  <div class="row d-flex justify-content-center align-items-center p-5 mt-3">
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="login()"
+      class="border p-3 rounded-3"
+    >
+      <div class="row g-0">
+        <div class="col text-center p-2 mb-3 bg-light">
+          <span class="fs-3">Welcome Back</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="
+              loginForm.get('email')?.touched && loginForm.get('email')?.invalid
+            "
+          >
+            <div *ngIf="loginForm.get('email')?.errors?.['required']">
+              Email is required
+            </div>
+            <div *ngIf="loginForm.get('email')?.errors?.['email']">
+              Invalid email format
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col mb-3">
+          <label for="pwd" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="pwd"
+            formControlName="password"
+          />
+          <div
+            class="form-text text-danger"
+            *ngIf="
+              loginForm.get('password')?.touched &&
+              loginForm.get('password')?.invalid
+            "
+          >
+            <div *ngIf="loginForm.get('password')?.errors?.['required']">
+              Password is required
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6 offset-3">
+          <div class="d-grid">
+            <button
+              type="submit"
+              [disabled]="loginForm.invalid || loginForm.pending"
+              class="btn"
+              [ngClass]="{
+                'btn-primary': !loginForm.invalid,
+                'btn-secondary': loginForm.invalid
+              }"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Display login error message if loginError is true -->
+      <div class="row">
+        <div class="col-6 offset-3 mt-3" *ngIf="loginError">
+          <div class="alert alert-danger" role="alert">
+            Invalid email or password. Please try again.
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="signUp p-5 mt-3">
+      <p>Don't have an account yet? <a routerLink="/register">Sign up</a></p>
+    </div>
+  </div>
+</div>

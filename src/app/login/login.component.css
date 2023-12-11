@@ -1,0 +1,28 @@
+
+.container-fluid {
+  height:100vh;
+}
+form{
+  width:500px;
+}
+.banner {
+  height: 20vh;
+  background-color: #59adeb;
+  position: relative;
+}
+.twitter-logo {
+  position: absolute;
+  bottom: -1px;
+  font-size: 60px;
+  color: white;
+  padding: 5px;
+}
+.signUp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 5px;
+  margin-top: 20px;
+}

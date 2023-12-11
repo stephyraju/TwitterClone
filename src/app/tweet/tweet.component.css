@@ -1,0 +1,95 @@
+/* Reset default margin and padding for the entire document */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+.tweet-container {
+  display: flex; /* Use flexbox for side-by-side layout */
+  align-items: flex-start; /* Align items to the top */
+  margin-bottom: 30px;
+}
+
+.tweet-sidebar {
+  flex: 0 0 auto;
+}
+
+.icon-menu ul,
+.icon-menu li,
+.icon-menu a {
+  display: flex;
+  flex-flow: row nowrap;
+  margin: 10px;
+}
+
+.icon-color {
+  color: gray;
+}
+
+.profile-description {
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  font-size: 14px;
+}
+
+.profile-name-time {
+  display: flex;
+  align-items: center;
+}
+
+.profile-full-name {
+  margin: 5px 10px 5px 0;
+  font-size: 16px;
+}
+
+.time-since-tweet {
+  margin-left: auto;
+  color: #9aaab4;
+}
+
+.tweet-controls {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.tweet-controls .tweet-replies a {
+  text-decoration: none;
+  color: #3c87bf;
+}
+
+.comment-icon {
+  margin-right: 10px;
+}
+.thumbnail-container{
+  margin: 10px;
+}
+.thumbnail {
+  border-radius: 5px;
+}
+.comment-icon{
+  padding-top: 5px;
+}
+
+.icon-menu ul {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 40px;/* space between icons */
+  margin: 10px;
+}

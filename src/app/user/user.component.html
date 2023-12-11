@@ -1,0 +1,93 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <app-nav></app-nav>
+    </div>
+    <div class="col-md-10">
+      <div class="profile">
+        <div class="row">
+          <div class="banner-container">
+            <img
+              class="banner"
+              src="https://picsum.photos/292/147/?random&now"
+              height="147"
+              width="292"
+              alt="Picture of fred's gardern"
+            />
+          </div>
+          <div class="col-md-9" >
+            <h2 class="profile-name" *ngIf="user"> {{ user?.name}} </h2>
+            <div class="col-md-9" *ngIf="userid | async as userId"></div>
+
+
+            <div class="controls_container">
+              <label *ngIf="!enableEdit" class="form_controls">Bio: {{user?.bio}}</label>
+            </div>
+            </div>
+
+            <div class="following-info d-flex">
+              <p class="me-4">Followers: {{user.followersCount || 2}}</p>
+              <p>Following: {{user.following || 1}}</p>
+            </div>
+            <div class="login__header__right" >
+                  <div class="login__header__right__card__content">
+                    <form [formGroup]="registration" class="login-form" (ngSubmit)="updateUserdata()">
+                      <span style="margin-left: auto;opacity: 50%;" (click)="updateEdit(true)" class="controls_container material-icons">Edit Profile</span>
+
+                      <div class="controls_container">
+                       <input *ngIf="enableEdit" class="form_controls" [(ngModel)]=user.name type="text" formControlName="name" id="name" placeholder="Name" required>
+                       <div  *ngIf="enableEdit" class="buttons_css">
+                        <button type="submit" class="login-button m-3">Update</button>
+                        <button type="button" (click)="updateEdit(false)" class="login-button login-button-class" >Cancel</button>
+                      </div>
+                      </div>
+                      <div class="controls_container">
+
+                        <input *ngIf="enableEdit" class="form_controls" id="userBio" [(ngModel)]=user.bio type="textarea" formControlName="bio" placeholder="Bio" required>
+                        <div  *ngIf="enableEdit" class="buttons_css">
+                          <button type="submit" class="login-button m-3">Update</button>
+                          <button type="button" (click)="updateEdit(false)" class="login-button login-button-class">Cancle </button>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="error-message" *ngIf="error">
+                        {{error}}
+                      </div>
+
+                      </form>
+                   <br>
+                    </div>
+            </div>
+        </div>
+
+        <div class="profile-tweets mt-4" *ngIf="tweets.length > 0">
+          <h3>Tweets</h3>
+          <ul class="tweet-list">
+            <li class="tweet" *ngFor="let tweet of tweets">
+              {{ tweet.content }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="profile-liked-tweets mt-4" *ngIf="likedTweets.length > 0">
+          <h3>Liked Tweets</h3>
+          <ul class="tweet-list">
+            <li class="tweet" *ngFor="let likedTweet of likedTweets">
+              {{ likedTweet.text }}
+            </li>
+          </ul>
+        </div>
+
+        <div class="profile-retweeted-tweets mt-4" *ngIf="retweetedTweets.length > 0">
+          <h3>Retweeted Tweets</h3>
+          <ul class="tweet-list">
+            <li class="tweet" *ngFor="let retweetedTweet of retweetedTweets">
+              {{ retweetedTweet.text }}
+            </li>
+          </ul>
+        </div>
+          </div>
+    </div>
+  </div>
+</div>

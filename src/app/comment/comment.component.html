@@ -1,0 +1,11 @@
+
+<div (click)="toggleComments()" class="comments-text">
+  Comments ({{ numberOfComments }})
+</div>
+
+<div *ngIf="showComments" class="comment-list">
+  <!-- Display comments here -->
+  <div *ngFor="let comment of comments">
+    {{ comment.commentMsg }}
+  </div>
+</div>

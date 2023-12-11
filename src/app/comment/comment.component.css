@@ -1,0 +1,10 @@
+.comment-modal {
+  display: none;
+}
+
+.comment-modal.open {
+  display: block;
+}
+.comments-text {
+color: #9aaab4;
+}

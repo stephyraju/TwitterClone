@@ -1,0 +1,25 @@
+
+.twitter-icon {
+  font-size: 30px;
+  color: #59adeb;
+  float: none;
+  margin: 0 auto;
+}
+.icon-text {
+  font-weight: bold;
+  font-size: 20px;
+  float: none;
+  margin: 0 auto;
+}
+/* navbar in center */
+.navbar {
+  background-color: #eaeff1;
+  color: #ffffff;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 0;
+  height: 70px;
+}

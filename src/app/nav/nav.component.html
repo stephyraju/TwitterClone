@@ -1,0 +1,34 @@
+<!-- Navbar on the side -->
+<nav class="navbar navbar-expand flex-column nav-position ">
+  <div class="navbar-nav d-flex flex-column">
+    <a class="nav-item nav-link" routerLink="/home">
+      <i class="fas fa-home"></i>
+      <span class="icon-text">Home</span>
+    </a>
+    <a class="nav-item nav-link" [routerLink]="['/user', loggedInUser?.name || 'Anna Dunnes']">
+      <i class="fas fa-user"></i>
+      <span class="icon-text">Profile</span>
+    </a>
+    <ng-container *ngIf="loggedInUser; else loginAndRegisterLinks">
+      <a class="nav-item nav-link" href="#" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i>
+        <span class="icon-text">Log Out</span>
+      </a>
+    </ng-container>
+    <ng-template #loginAndRegisterLinks>
+      <a class="nav-item nav-link" routerLink="/login">
+        <i class="fas fa-sign-in-alt"></i>
+        <span class="icon-text">Login</span>
+      </a>
+    <a class="nav-item nav-link" routerLink="/register">
+      <i class="fas fa-user-plus"></i>
+      <span class="icon-text">Register</span>
+    </a>
+  </ng-template>
+    <a class="nav-item nav-link" routerLink="/feed">
+      <i class="fas fa-newspaper"></i>
+      <span class="icon-text">Feed</span>
+    </a>
+  </div>
+
+</nav>

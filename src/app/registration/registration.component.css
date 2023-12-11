@@ -1,0 +1,41 @@
+/* Set the height of the container to fill the whole viewport */
+.container-fluid {
+  height: 100vh;
+}
+.title {
+  padding-bottom: 20px;
+}
+form {
+  width: 500px;
+}
+.twitter-icon {
+  color: rgb(29, 155, 240);
+  padding-bottom: 40px;
+}
+/* Set the flex properties for the image container to occupy half page*/
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Optional background color for the image container */
+}
+
+/* Set the flex properties for the registration form container */
+.registration-container {
+  flex: 1;
+  display: flex;
+}
+
+.registration-container form {
+  padding: 20px;
+}
+.img-fluid {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+.create-container {
+  padding-left: 40px;
+}

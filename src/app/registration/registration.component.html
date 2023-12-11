@@ -1,0 +1,255 @@
+<div class="container-fluid">
+  <div class="row h-100">
+    <div class="col-md-6 p-0">
+      <img
+        src="https://abs.twimg.com/sticky/illustrations/lohp_en_1302x955.png"
+        class="img-fluid"
+      />
+    </div>
+    <div class="col-md-6 d-flex flex-column justify-content-center">
+      <div class="d-flex flex-column justify-content-center create-container">
+        <div>
+          <i class="fab fa-twitter fa-3x twitter-icon"></i>
+        </div>
+        <div class="title">
+          <h1>Happening now</h1>
+          <h3>Join Twitter today</h3>
+        </div>
+        <div class="registration-container"></div>
+        <form
+          [formGroup]="registrationForm"
+          (ngSubmit)="registerSubmitted()"
+          class="border p-3 rounded-3"
+        >
+          <div class="row g-0">
+            <div class="col text-center p-2 mb-3 bg-light">
+              <span class="fs-3">Create your account</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mb-3">
+              <label for="firstName" class="form-label">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                formControlName="firstName"
+              />
+              <div
+                class="form-text text-danger"
+                *ngIf="firstName.errors?.['required'] && (firstName.touched || firstName.dirty)"
+              >
+                First Name is required
+              </div>
+              <div
+                class="form-text text-danger"
+                *ngIf="firstName.errors?.['minlength'] && (firstName.touched || firstName.dirty)"
+              >
+                First Name is too short
+              </div>
+              <div
+                class="form-text text-danger"
+                *ngIf="firstName.errors?.['pattern'] && (firstName.touched || firstName.dirty)"
+              >
+                First Name should start with alphabet
+              </div>
+            </div>
+
+            <div class="col mb-3">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastName"
+                formControlName="lastName"
+              />
+              <div
+                class="form-text text-danger"
+                *ngIf="lastName.errors?.['required'] && (lastName.touched || lastName.dirty)"
+              >
+                Last Name is required
+              </div>
+              <div
+                class="form-text text-danger"
+                *ngIf="lastName.errors?.['minlength'] && (lastName.touched || lastName.dirty)"
+              >
+                Last Name is too short
+              </div>
+              <div
+                class="form-text text-danger"
+                *ngIf="lastName.errors?.['pattern'] && (lastName.touched || lastName.dirty)"
+              >
+                Last Name should start with alphabet
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col mb-3">
+              <label for="mobile" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                formControlName="email"
+              />
+              <div
+                class="form-text text-danger"
+                *ngIf="email.errors?.['required'] && (email.touched || email.dirty)"
+              >
+                Email is required
+              </div>
+              <div
+                class="form-text text-danger"
+                *ngIf="email.errors?.['email'] && (email.touched || email.dirty)"
+              >
+                Email is invalid
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mb-3">
+              <label for="mobile" class="form-label">Mobile Number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="mobile"
+                formControlName="mobile"
+              />
+              <div
+                class="form-text text-danger"
+                *ngIf="mobile.errors?.['required'] && (mobile.touched || mobile.dirty)"
+              >
+                Mobile number is required
+              </div>
+              <div
+                class="form-text text-danger"
+                *ngIf="mobile.errors?.['pattern']"
+              >
+                Number is invalid
+              </div>
+              <div
+                class="form-text text-danger"
+                *ngIf="mobile.errors?.['minlength'] && (mobile.touched || lastName.dirty)"
+              >
+                Number is short
+              </div>
+              <div
+                class="form-text text-danger"
+                *ngIf="mobile.errors?.['maxlength'] && (mobile.touched || lastName.dirty)"
+              >
+                Number is long
+              </div>
+              <div class="form-text"></div>
+            </div>
+            <div class="col mb-3 ps-3">
+              <div class="m-1">Gender</div>
+              <div class="form-check form-check-inline">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  value="m"
+                  id="male"
+                  formControlName="gender"
+                />
+                <label class="form-check-label" for="male">Male</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input
+                  type="radio"
+                  class="form-check-input"
+                  value="f"
+                  id="female"
+                  formControlName="gender"
+                />
+                <label class="form-check-label" for="female">Female</label>
+              </div>
+              <div
+                class="form-text text-danger"
+                *ngIf="gender.errors?.['required']"
+              >
+                Select Gender
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mb-3">
+              <label for="pwd" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="pwd"
+                formControlName="pwd"
+              />
+              <div
+                class="form-text text-danger"
+                *ngIf="pwd.errors?.['required'] && (pwd.touched || pwd.dirty)"
+              >
+                Password is required
+              </div>
+              <div
+                class="form-text text-danger"
+                *ngIf="pwd.errors?.['minlength'] || pwd.errors?.['maxlength'] && (pwd.touched || pwd.dirty)"
+              >
+                Password should be between 6 and 20 characters
+              </div>
+              <div
+                class="form-text text-danger"
+                *ngIf="pwd.errors?.['specialCharacter'] && (pwd.touched || pwd.dirty)"
+              >
+                Password should contain at least one special character
+              </div>
+            </div>
+            <div class="col mb-3">
+              <label for="rpwd" class="form-label">Confirm Password</label>
+              <input
+                type="password"
+                class="form-control"
+                id="rpwd"
+                formControlName="rpwd"
+              />
+              <div
+                class="form-text text-danger"
+                [ngStyle]="{ display: confirmPassword }"
+              >
+                Password is not same
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 offset-3">
+              <div class="d-grid">
+                <button
+                  type="submit"
+                  [disabled]="
+                    registrationForm.invalid || registrationForm.pending
+                  "
+                  class="btn"
+                  [ngClass]="{
+                    'btn-primary': !registrationForm.invalid,
+                    'btn-secondary': registrationForm.invalid
+                  }"
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="registrationSuccess" class="text-center mt-3">
+            <p>Registration successful! Please proceed to login.</p>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="redirectToLogin()"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="p-5 mt-3">
+        <p>Already have an account? <a routerLink="/login">Login here</a></p>
+      </div>
+    </div>
+  </div>
+</div>
